@@ -10,9 +10,11 @@
                    	<field name = "blanket_order"/>
                </field>
 
-                <div name="button_box" position= 'inside' >
-                      <button name="%(action_generate_lines)d" type='action' string = 'Generate line'/>
-                </div>
+                <!-- <div name="button_box" position= 'inside' > -->
+                    <button name = 'action_done'  position= 'after' >
+                      <button name="%(action_generate_lines)d" class ='oe_stat_button' type='action' string = 'Generate line'  attrs="{'invisible':[['state', 'not in', ['sale']],['blanket_order','!=',True]]}"  />
+                  </button>
+            <!--     </div> -->
 
                 <xpath expr="//page/field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
                     <field name = "qty_contract"/>
@@ -21,8 +23,9 @@
         </record>
 
 
-
-
+<!-- 
+<button name="action_quotation_send" string="Send by Email" type="object" states="draft" class="btn-primary" modifiers="{'invisible': [['state', 'not in', ['draft']]]}"/>
+ -->
 
 
 
