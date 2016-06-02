@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="product_alternative_products" model="ir.ui.view">
+          <field name="name">Mrp Bom Products</field>
+          <field name="model">mrp.bom</field>
+          <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+          <field name="arch" type="xml">
+            <xpath expr="//page/field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="after">
+                 <field name = 'alternate_products' domain = "[('product_id','=','alternate_product_id' )]" widget="many2many_tags" />
+             </xpath>
+            </field>
+        </record>
+
+
+        <record id="product_alternative_bom_line_form" model="ir.ui.view">
+            <field name="name">alternative.products</field>
+            <field name="model">bom.alternate.prodcts</field>
+            <!-- <field name="inherit_id" ref="product.product_normal_form_view"/> -->
+            <field name="arch" type="xml">
+              <form string="Alternate Products">
+                 <group >
+
+                      <field name = 'product_id' required ='1'/>
+                         <field name = 'alternate_product_id' invisible='1'/>
+                      <field name = 'name' invisible='1'/>
+                </group>
+              </form>
+
+            </field>
+        </record>
+
+        <record id="product_alternative_bom_line_tree" model="ir.ui.view">
+            <field name="name">alternative.products</field>
+            <field name="model">bom.alternate.prodcts</field>
+            <!-- <field name="inherit_id" ref="product.product_normal_form_view"/> -->
+            <field name="arch" type="xml">
+              <tree string="Alternate Products">
+                    <field name = 'product_id'/>
+
+              </tree>
+
+            </field>
+        </record>
+
+
+</data>
+</odoo>

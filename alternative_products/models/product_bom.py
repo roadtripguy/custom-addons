@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+from openerp import api, fields, models, _
+
+
+class Bom_Alternate_products(models.Model):
+    '''Alternate Products in Bom line
+
+    '''
+    _name = 'bom.alternate.prodcts'
+    _description = 'Alternate Products in Bom line'
+
+    product_id = fields.Many2one('product.template', 'Product Name' )
+    alternate_product_id = fields.Many2one('product.template', 'Product Name' )
+    bom_line_id = fields.Many2one('mrp.bom.line', 'BOM Line')
+    name = fields.Char('Name')
+
+
+    @api.onchange('product_id')
+    def chage_name(self):
+        if self.product_id:
+            self.name = self.product_id.name
+
+
+class ProductsBOM(models.Model):
+    """Alternate products """
+    _inherit ='mrp.bom.line'
+
+    alternate_products =  fields.One2many('bom.alternate.prodcts', 'bom_line_id', 'Alternate Products')
