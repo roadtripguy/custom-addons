@@ -16,11 +16,12 @@ class SaleOrder(models.Model):
     
     blanket_order = fields.Boolean("Blanket Order")
     
-    
+ 
     
     
 class SaleOrderLines(models.Model):
     _inherit = 'sale.order.line'
     
-    
-    qty_contract = fields.Integer("Quantity Contract")
+    qty_contract = fields.Integer("Contract Qty")
+    # compute='_compute_total'
+

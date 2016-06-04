@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_tender_document">
+            <t t-set="doc" t-value="doc" />
+            <div class="page">
+                <div class="oe_structure"/>
+
+                <table style="width:100%;border: 1px solid black; border-collapse: collapse; padding: 25px;">
+                    <tr>
+                        <td width="3000"  height="60" style="font-Size:15px; font-weight: 400;background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Sale Order # <span t-esc="get_source(doc.origin)"/></td>
+
+                    </tr>
+
+                </table>
+
+                <table style="width:100%;border: 1px solid black; border-collapse: collapse; padding: 25px;">
+
+                    <tr>
+                        <td width="208"  height="60" style="font-Size:15px; font-weight: 400;background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Purchased</td>
+                        <td width="208"  height="60" style="font-Size:15px; font-weight: 400;background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Part</td>
+                        <td width="208" height="60"  style="font-Size:15px; font-weight: 400;background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Vendor</td>
+                        <td width="208" height="60"  style="font-Size:15px; font-weight: 400; background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Cost per Unit</td>
+                        <td width="208" height="60"  style="font-Size:15px; font-weight: 400; background:#d5dce4; border: 1px solid black; padding: 20px;" class="text-center">Total Cost</td>
+                    </tr>
+                    <t t-foreach="doc.line_ids" t-as="line">
+                        <t t-foreach="get_po_line_per_product(doc,line.product_id)" t-as="po_line" >
+
+                            <tr >
+                                <td width="208" height="60" style="font-Size:15px; border: 1px solid black; padding: 20px;" t-esc="po_line.product_qty"/>
+                                <td width="208" height="60"  style="font-Size:15px; border: 1px solid black; padding: 20px;"  class="text-left" t-esc="po_line.product_id.name"/>
+                                <td width="208" height="60"  style="font-Size:15px; border: 1px solid black; padding: 20px;"  class="text-left" t-esc="po_line.order_id.partner_id.name"/>
+                                <td width="208" height="60"  style="font-Size:15px; border: 1px solid black; padding: 20px;"  class="text-left" t-esc="po_line.price_unit"/>
+                                <td width="208" height="60"  style="font-Size:15px; border: 1px solid black; padding: 20px;"  class="text-left" t-esc="po_line.price_subtotal"/>
+                            </tr>
+
+                        </t>
+
+                        <tr t-if="get_po_line_per_product(doc,line.product_id)">
+                            <t t-set="values" t-value="get_value(get_po_line_per_product(doc,line.product_id))"/>
+                            <td width="208" style="font-Size:13px; border: 1px solid black; padding: 20px;"  class="text-left">#Total Number Purchased: <span t-esc="values['total_qty']"/></td>
+                            <td width="208" style="font-Size:13px; border: 1px solid black; padding: 20px;"  > </td>
+                            <td width="208" style="font-Size:13px; border: 1px solid black; padding: 20px;"  ></td>
+                           
+
+                            <td width="208" style="font-Size:13px; border: 1px solid black; padding: 20px;"  class="text-left">Average Cost per unit: <span t-esc="values['per_unit']"/><br/>(Total Cost / Total # Purchased)</td>
+                            <td width="208" style="font-Size:13px; border: 1px solid black; padding: 20px;"   class="text-left">Total Cost: <span t-esc="values['total']"/></td> 
+                        </tr>
+                        
+                    </t>  
+                </table>
+                <div class="oe_structure"/>
+            </div>
+	
+        </template>
+
+
+        <template id="report_tender">
+            <t t-call="report.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="tender_merge.report_tender_document" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

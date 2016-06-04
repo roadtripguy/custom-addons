@@ -7,15 +7,15 @@
             <field name="arch" type="xml">
                 <form string="Invoice Sales Order">
                     <p class="oe_grey">
-                        Generate Sale Order Lines as per demand
+                        Release Sale Order Lines as per demand
                     </p>
                      <group >
-                     <field name="sale_id"  required = '1' widget='selection'/>
+                     <field name="sale_id"  invisible='1' required = '1' widget='selection'/>
                      <field name="sale_line_id"  required = '1' />
                        <field name="quantity" required = '1' />
                     </group>
                     <footer>
-                        <button name="generate_lines" type='object' string='Generate Lines' class="btn-primary btn-default"/>
+                        <button name="generate_lines" type='object' string='Release Qty' class="btn-primary btn-default"/>
                         OR
                         <button string="Cancel" class="btn-default" special="cancel"/>
                     </footer>

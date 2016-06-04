@@ -3,9 +3,9 @@
 from openerp import api, fields, models, _
 
 
+
 class Bom_Alternate_products(models.Model):
     '''Alternate Products in Bom line
-
     '''
     _name = 'bom.alternate.prodcts'
     _description = 'Alternate Products in Bom line'
@@ -26,4 +26,5 @@ class ProductsBOM(models.Model):
     """Alternate products """
     _inherit ='mrp.bom.line'
 
-    alternate_products =  fields.One2many('bom.alternate.prodcts', 'bom_line_id', 'Alternate Products')
+
+    alternate_products =  fields.Many2many('bom.alternate.prodcts', string = 'Alternate Products')

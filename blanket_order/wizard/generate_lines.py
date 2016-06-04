@@ -18,14 +18,16 @@ class GenerateSaleLines(models.TransientModel):
         return {'domain':{ 'sale_line_id':[('order_id','=', self.sale_id.id),('product_uom_qty','=',0)]}}
 
     sale_id = fields.Many2one('sale.order',string = 'Sale Order', default = get_order)
-    sale_line_id = fields.Many2one('sale.order.line' ,string ='Qunatity Contract Line', domain=[('product_uom_qty', '=', 0)])
-    quantity = fields.Integer("Qunatity")
+    sale_line_id = fields.Many2one('sale.order.line' ,string ='Contract Line', domain=[('product_uom_qty', '=', 0)])
+    quantity = fields.Integer("Quantity")
 
     @api.multi
     def generate_lines(self):
         for line in self :
             if not line.quantity :
                raise UserError(_('Please enter a valid quantity'))
+            if line.quantity > line.sale_line_id.qty_contract :
+                raise UserError(_('You cannot release quantity reater than in contract'))
             line.sale_line_id.copy({ 'order_id' : line.sale_line_id.order_id.id,'product_uom_qty': line.quantity, 'qty_contract':0})
             line.sale_line_id.write({'qty_contract':line.sale_line_id.qty_contract - self.quantity })
 
