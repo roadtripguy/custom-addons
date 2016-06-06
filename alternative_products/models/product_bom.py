@@ -28,3 +28,4 @@ class ProductsBOM(models.Model):
 
 
     alternate_products =  fields.Many2many('bom.alternate.prodcts', string = 'Alternate Products')
+    alternate_manufacturers =  fields.Many2many('res.partner', string = 'Alternate Manufacturers')

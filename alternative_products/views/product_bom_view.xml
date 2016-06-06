@@ -9,6 +9,7 @@
                 <field name="arch" type="xml">
                   <xpath expr="//page/field[@name='bom_line_ids']/tree/field[@name='product_qty']" position="after">
                        <field name = 'alternate_products'  widget="many2many_tags" />
+                        <field name = 'alternate_manufacturers'  widget="many2many_tags" />
                    </xpath>
                   </field>
               </record>
