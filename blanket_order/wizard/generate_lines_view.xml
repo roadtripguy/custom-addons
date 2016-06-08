@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_advance_payment_inv" model="ir.ui.view">
+            <field name="name">Invoice Orders</field>
+            <field name="model">generate.salelines</field>
+            <field name="arch" type="xml">
+                <form string="Invoice Sales Order">
+                    <p class="oe_grey">
+                        Release Sale Order Lines as per demand
+                    </p>
+                     <group >
+                     <field name="sale_id"  invisible='1' required = '1' widget='selection'/>
+                     <field name="sale_line_id"  required = '1' />
+                       <field name="quantity" required = '1' />
+                    </group>
+                    <footer>
+                        <button name="generate_lines" type='object' string='Release Qty' class="btn-primary btn-default"/>
+                        OR
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+
+        <record id="action_generate_lines" model="ir.actions.act_window">
+            <field name="name">Genrate Sale Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">generate.salelines</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+
+
+
+    </data>
+</odoo>

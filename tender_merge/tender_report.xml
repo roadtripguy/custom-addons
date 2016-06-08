@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <report 
+            id="tender_report"
+            string="Tender Report"
+            model="purchase.requisition" 
+            report_type="qweb-pdf"
+            file="tender_merge.report_tender" 
+            name="tender_merge.report_tender" 
+        />
+    </data>
+</openerp>

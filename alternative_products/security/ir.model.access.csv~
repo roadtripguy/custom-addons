@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_alternate_product_user_user,product.alternate.user,model_bom_alternate_prodcts,base.group_user,1,1,1,1
+
