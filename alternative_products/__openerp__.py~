@@ -17,6 +17,7 @@
     'depends': ['base','sale','mrp'],
 
     'data': [
+          'security/ir.model.access.csv',
          'views/product_view.xml',
          'views/product_bom_view.xml'
 

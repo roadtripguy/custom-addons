@@ -6,7 +6,6 @@ class PurchaseOrder(models.Model):
 
     _inherit = 'purchase.order'
 
-
     @api.multi
     def button_confirm(self):
         procurement_obj = self.env['procurement.order']
@@ -18,12 +17,5 @@ class PurchaseOrder(models.Model):
                     if proc:
                         proc.purchase_line_id = line.id
         return res
-                    
-                
-	        
-	
-
-
-
 
 PurchaseOrder()

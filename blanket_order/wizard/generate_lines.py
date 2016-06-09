@@ -27,8 +27,6 @@ class GenerateSaleLines(models.TransientModel):
             if not line.quantity :
                raise UserError(_('Please enter a valid quantity'))
             if line.quantity > line.sale_line_id.qty_contract :
-                raise UserError(_('You cannot release quantity reater than in contract'))
+                raise UserError(_('You cannot release a quantity greater than what is remaining on the contract'))
             line.sale_line_id.copy({ 'order_id' : line.sale_line_id.order_id.id,'product_uom_qty': line.quantity, 'qty_contract':0})
             line.sale_line_id.write({'qty_contract':line.sale_line_id.qty_contract - self.quantity })
-
-
