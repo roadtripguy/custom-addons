@@ -4,13 +4,11 @@
         <record id="product_alias_name" model="ir.ui.view">
             <field name="name">product.alias</field>
             <field name="model">product.template</field>
-            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
-                  <page name = 'notes' position= 'after'>
-                  	<page name ='alias' string ="Alias Name">
-                  		<field name ='alias_ids'  string ="Alias Names" widget='many2many_tags'></field>
-                  </page>
-              </page>
+              <field name ='default_code'  position= 'after' >
+                  <field name ='alias_ids'  string ="Alias Names" widget='many2many_tags'></field>
+              </field>
             </field>
         </record>
 
@@ -33,7 +31,7 @@
             <field name="model">product.alias</field>
             <field name="arch" type="xml">
                  <form string='Product Alias'>
-                 	<group> 
+                 	<group>
                  	   <field name="name" string ='Alias Name' required='1'/>
                  	   <field name="product_id" invisible='1'/>
                  	</group>
@@ -44,7 +42,7 @@
 
 
 
-        
+
 
 
 
