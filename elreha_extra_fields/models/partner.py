@@ -6,4 +6,4 @@ from openerp import api, fields, models, _
 class Partner(models.Model):
     _inherit = 'res.partner'
 
-    reseller_id = fields.Char("Resller ID")
+    reseller_id = fields.Char("Reseller ID")

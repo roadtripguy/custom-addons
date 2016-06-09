@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Invoice Sales Order">
                     <p class="oe_grey">
-                        Release Sale Order Lines as per demand
+                        Release Quantities from Blanket Order
                     </p>
                      <group >
                      <field name="sale_id"  invisible='1' required = '1' widget='selection'/>
@@ -22,9 +22,6 @@
                 </form>
             </field>
         </record>
-
-
-
         <record id="action_generate_lines" model="ir.actions.act_window">
             <field name="name">Genrate Sale Line</field>
             <field name="type">ir.actions.act_window</field>
@@ -33,9 +30,5 @@
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
-
-
-
-
     </data>
 </odoo>

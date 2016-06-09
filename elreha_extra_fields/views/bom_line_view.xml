@@ -11,10 +11,7 @@
               <field name='reference_designators'/>
               <field name = 'elreha_item_number'/>
        </field>
-
       </field>
     </record>
-
-
   </data>
 </odoo>
