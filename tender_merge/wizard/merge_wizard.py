@@ -23,7 +23,7 @@ class TenderMergeConfirm(models.TransientModel):
             if len(tenders) < 2:
                 raise UserError('Warning \n Select Multiple Tenders to Merge')            
             if 'cancel' in tenders.mapped('state'):
-                raise UserError('Warning \n Cannot merge tenders in cancel state')
+                raise UserError('Warning \n Cannot merge tenders marked canceled')
 
             requisition_line_ids = tenders.mapped('line_ids')
             purchase_ids = tenders.mapped('purchase_ids')

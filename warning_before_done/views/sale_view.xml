@@ -7,13 +7,9 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                   <button name="action_done" position ='replace'>
-                    <button name="action_done" type="object" string="Set to Done" states="sale" confirm="If you mak this one as done. The manager can only revert the order"  help="If a sale order is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the sale order." />
+                    <button name="action_done" type="object" string="Set to Done" states="sale" confirm="Only a manager can unlock a record after it has been marked done.  Are you sure you want to continue?"  help="If a sale order is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the sale order." />
                     <button name="action_back_sale" type="object" string="Move Back To Sale" states="done" groups ='base.group_sale_manager' />
-
                 </button>
-
-
-
             </field>
         </record>
 

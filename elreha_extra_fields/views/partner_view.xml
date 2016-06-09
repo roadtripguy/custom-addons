@@ -8,13 +8,8 @@
         <field name="arch" type="xml">
            <field name = 'property_payment_term_id' position='after'>
              <field name = 'reseller_id'/>
-             
           </field>
         </field>
     </record>
-
-
-
-
   </data>
 </odoo>

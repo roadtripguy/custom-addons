@@ -5,10 +5,10 @@ from openerp import api, fields, models, _
 
 
 class Bom_Alternate_products(models.Model):
-    '''Alternate Products in Bom line
+    '''Alternate Products on Bom line
     '''
     _name = 'bom.alternate.prodcts'
-    _description = 'Alternate Products in Bom line'
+    _description = 'Alternate Products on BoM line'
 
     product_id = fields.Many2one('product.template', 'Product Name' )
     alternate_product_id = fields.Many2one('product.template', 'Product Name' )

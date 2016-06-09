@@ -13,10 +13,6 @@
               </page>
             </field>
         </record>
-
-
-
-
         <record id="product_alias_name_search" model="ir.ui.view">
             <field name="name">product.alias</field>
             <field name="model">product.template</field>
@@ -27,7 +23,6 @@
                 </field>
             </field>
         </record>
-
         <record id="product_alias_form" model="ir.ui.view">
             <field name="name">product.alias</field>
             <field name="model">product.alias</field>
@@ -40,13 +35,5 @@
                 </form>
             </field>
         </record>
-
-
-
-
-        
-
-
-
 </data>
 </odoo>

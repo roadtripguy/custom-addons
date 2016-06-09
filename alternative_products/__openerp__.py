@@ -10,9 +10,9 @@
     """,
 
     'author': "SarathKumar",
-    'website': "http://www.yourcompany.com",
+    'website': "http://www.elrehac.com",
     'category': 'sales',
-    'version': '0.1',
+    'version': '0.2',
 
     'depends': ['base','sale','mrp'],
 
