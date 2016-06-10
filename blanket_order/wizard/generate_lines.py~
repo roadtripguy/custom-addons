@@ -1,0 +1,16 @@
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
+
+import time
+
+from openerp import api, fields, models, _
+import openerp.addons.decimal_precision as dp
+from openerp.exceptions import UserError
+
+class GenerateSaleLines(models.TransientModel):
+    _name ="generate.salelines"
+    
+    sale_line_id = fields.Many2one('sale.order.line' , domain=[('product_uom_qty', '=', 0)])
+
+
+
+

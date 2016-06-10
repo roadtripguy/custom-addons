@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_review_purchase_done">
+            <field name="name">Purchase.order</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+                  <button name="button_done" position ='replace'>
+                                        <button name="button_done" type="object" string="Lock Bills" states="purchase"   confirm="Only a manager can unlock a record after it has been marked done.  Are you sure you want to continue?"  help="Set a purchase order as done if you don't want to receive vendor bills anymore for this purchase order."/>
+                    <!-- <button name="button_done" type="object" states="purchase"  confirm="If you mak this one as done. The manager can only revert the order"  help="If a sale order is done, you cannot modify it manually anymore. However, you will still be able to invoice or deliver. This is used to freeze the sale order." /> -->
+                    <button name="action_back_purchase" type="object" string="Move Back to Purchase"  states="done" groups ='purchase.group_purchase_manager' />
+                </button>
+            </field>
+        </record>
+    </data>
+</odoo>

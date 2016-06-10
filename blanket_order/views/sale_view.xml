@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+        <record id="view_order_form_blanket_order" model="ir.ui.view">
+            <field name="name">sale.order.form.blanket.order</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+               <field name="payment_term_id" position = 'after'>
+                   	<field name = "blanket_order" context="{'blanket_order':True}"/>
+               </field>
+                <!-- <div name="button_box" position= 'inside' > -->
+                    <button name = 'action_done'  position= 'after' >
+                      <button name="%(action_generate_lines)d" class ='oe_stat_button' type='action' string = 'Release From Blanket Quantity'  attrs="{'invisible':['|',['state', 'not in', ['sale']],['blanket_order','!=',True]]}"  />
+                  </button>
+            <!--     </div> -->
+                <xpath expr="//page/field[@name='order_line']/tree/field[@name='name']" position="after">.
+                    <field name = "qty_contract"  />
+                </xpath>
+                 <xpath expr="//page/field[@name='order_line']/form/group/group/field[@name='price_subtotal']" position="after">
+                    <field name = "qty_contract" />
+                </xpath>
+            </field>
+        </record>
+<!-- 
+<button name="action_quotation_send" string="Send by Email" type="object" states="draft" class="btn-primary" modifiers="{'invisible': [['state', 'not in', ['draft']]]}"/>
+ -->
+  </data>
+</odoo>
