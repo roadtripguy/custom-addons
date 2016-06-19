@@ -16,11 +16,11 @@ class Bom_Alternate_products(models.Model):
     name = fields.Char('Name')
 
 
+
     @api.onchange('product_id')
     def chage_name(self):
         if self.product_id:
             self.name = self.product_id.name
-
 
 class ProductsBOM(models.Model):
     """Alternate products """
@@ -28,7 +28,7 @@ class ProductsBOM(models.Model):
 
 
     alternate_products =  fields.Many2many('bom.alternate.prodcts', string = 'Alternate Products')
-    alternate_manufacturers =  fields.Many2many('res.partner', string = 'Alternate Manufacturers')
+    alternate_manufacturers =  fields.Many2many('alternate.manufacturer', string = 'Alternate Manufacturers')
 
     #
 
@@ -42,8 +42,10 @@ class ProductsBOM(models.Model):
         if product_id:
             prod = self.pool.get('product.product').browse(cr, uid, product_id)
             al_product_ids =  [product.id for product in prod.alternative_products]
+            al_manufacturer_ids = [ man.id for man in prod.product_manufacturers]
             res.update({'domain':{
-                             'alternate_products':[('id', 'in',al_product_ids)]
+                             'alternate_products':[('id', 'in',al_product_ids)],
+                             'alternate_manufacturers':[('id','in',al_manufacturer_ids)]
                                  }
                         })
 

@@ -11,3 +11,4 @@ class Products(models.Model):
     _inherit ='product.template'
 
     alternative_products = fields.One2many('bom.alternate.prodcts', 'alternate_product_id', 'Alternate Products')
+    product_manufacturers = fields.One2many('alternate.manufacturer', 'manufacturer_id', 'Manufacturers')

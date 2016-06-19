@@ -14,6 +14,9 @@
                                       </tree>
                               </field>
                         </page>
+			<page name ='manufacturers' string ="Manufacturers">
+                                  <field name='product_manufacturers'  string ="Manufacturers"/>
+                        </page>
                     </page>
                   </field>
               </record>

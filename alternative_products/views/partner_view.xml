@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+
+
+
+
+
+    <record id="view_res_partner_manufaturer_form" model="ir.ui.view">
+        <field name="name">res.partner.manufacturer.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <group name="purchase" position="after">
+                <group string="Manufacturer" name="manufacturer">
+                    <field name="is_manufacturer"/>
+                </group>
+            </group>
+        </field>
+    </record>
+
+
+          <record id="manufacture_alternative_form" model="ir.ui.view">
+          <field name="name">alternative.manufacturers</field>
+          <field name="model">alternate.manufacturer</field>
+          <field name="arch" type="xml">
+            <form string="Alternate manufacturers">
+               <group >
+
+                    <field name = 'partner_id' required ='1' domain="[('is_manufacturer','=',1)]"/>
+                       <field name = 'manufacturer_id' invisible='1'/>
+                    <field name = 'name' invisible='1'/>
+              </group>
+            </form>
+          </field>
+          </record>
+
+
+
+            <record id="manufacture_alternative_tree" model="ir.ui.view">
+                  <field name="name">alternative.manufacturers_tree</field>
+                  <field name="model">alternate.manufacturer</field>
+                  <field name="arch" type="xml">
+                    <tree string="Alternate Manufacturers">
+                          <field name = 'partner_id'/>
+                    </tree>
+                  </field>
+              </record>
+
+
+
+
+
+
+
+
+
+
+</data>
+</odoo>
