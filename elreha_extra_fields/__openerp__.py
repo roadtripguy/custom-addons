@@ -14,13 +14,14 @@
     'category': 'sales',
     'version': '0.2',
 
-    'depends': ['base','sale','mrp'],
+    'depends': ['base','sale','mrp','purchase'],
 
     'data': [
          'security/ir.model.access.csv',
          'views/partner_view.xml',
          'views/bom_line_view.xml',
          'views/product_view.xml',
+         'views/purchase_view.xml'
 
 
     ],

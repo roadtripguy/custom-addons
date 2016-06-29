@@ -12,7 +12,7 @@
     'author': "SarathKumar",
     'website': "http://www.elrehac.com",
     'category': 'sales',
-    'version': '0.2',
+    'version': '0.3',
 
     'depends': ['base','sale','mrp'],
 

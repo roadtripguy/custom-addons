@@ -15,6 +15,16 @@ class Bom_Alternate_products(models.Model):
     bom_line_id = fields.Many2one('mrp.bom.line', 'BOM Line')
     name = fields.Char('Name')
 
+    @api.model
+    def create(self, vals):
+        product_obj = self.env['product.template']
+        if vals.get('product_id', False):
+            product = product_obj.browse(vals.get('product_id',False))
+            vals.update({'name':product.name})
+        return super(Bom_Alternate_products, self).create(vals)
+    
+
+
 
 
     @api.onchange('product_id')
